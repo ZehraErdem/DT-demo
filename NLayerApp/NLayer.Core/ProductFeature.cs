@@ -13,7 +13,7 @@ namespace NLayer.Core
 
         public string Color { get; set; }
         
-        public string Height { get; set; }
+        public int Height { get; set; }
 
         public int Width { get; set; }
 
