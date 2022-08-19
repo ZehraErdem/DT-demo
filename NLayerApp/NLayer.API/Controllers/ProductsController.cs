@@ -9,23 +9,21 @@ namespace NLayer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : CustomBaseController
+    public class ProductsController : CustomBaseController
     {
         private readonly IMapper _mapper;
-        private readonly IService<Product> _service;
-        private readonly IProductService _productService;
+        private readonly IProductService _service;
 
-        public ProductController(IMapper mapper, Core.Services.IService<Product> service, IProductService productService)
+        public ProductsController(IMapper mapper,  IProductService service)
         {
             _mapper = mapper;
             _service = service;
-            _productService = productService;
         }
 
         [HttpGet("[action]")]
         public async Task<IActionResult> GetProductWithCategory()
         {
-            return CreateActionResult(await _productService.GetProductsListWithCategory());
+            return CreateActionResult(await _service.GetProductsListWithCategory());
         }
 
         [HttpGet]
